@@ -39,8 +39,8 @@
 				{{{ if template.category }}}
 					{{{ if privileges.topics:create }}}
 
-                    <div class="input-group" component="topic-search">
-                        <input type="text" class="form-control form-control-sm" placeholder="Search" id=group-search">
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" placeholder="Search" id="topic-search" component="topic-search">
                         <span class="input-group-text search-button">
                             <i class="fa fa-search"></i>
                         </span>
