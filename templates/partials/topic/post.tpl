@@ -37,12 +37,7 @@
 			{{{ end }}}
 
 			<div class="d-flex gap-1 align-items-center">
-				<span class="text-muted">
-					{generateWroteReplied(@value, config.timeagoCutoff)}
-					{{{ if posts.showendorse }}}
-						<span style="color: green;">*An instructor has endorsed this post* </span>
-					{{{ end }}}
-				</span>
+				<span class="text-muted">{generateWroteReplied(@value, config.timeagoCutoff)}</span>
 
 				<i component="post/edit-indicator" class="fa fa-edit text-muted{{{ if privileges.posts:history }}} pointer{{{ end }}} edit-icon {{{ if !posts.editor.username }}}hidden{{{ end }}}" title="[[global:edited-timestamp, {isoTimeToLocaleString(./editedISO, config.userLang)}]]"></i>
 				<span data-editor="{posts.editor.userslug}" component="post/editor" class="visually-hidden">[[global:last-edited-by, {posts.editor.username}]] <span class="timeago" title="{isoTimeToLocaleString(posts.editedISO, config.userLang)}"></span></span>
@@ -66,6 +61,15 @@
 
 		<div class="content mt-2 text-break" component="post/content" itemprop="text">
 			{posts.content}
+
+	        {{{if !posts.isEnglish }}}
+		        <div class="sensitive-content-message">
+		        <a class="btn btn-sm btn-primary view-translated-btn">Click here to view the translated message.</a>
+		        </div>
+		        <div class="translated-content" style="display:none;">
+		        {posts.translatedContent}
+		        </div>
+	        {{{end}}}
 		</div>
 	</div>
 </div>
